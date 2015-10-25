@@ -1,0 +1,11 @@
+{
+  "name":"string",
+  "genre":"string",
+  "imageurl":"string",
+  "startdate":"string",
+  "enddate":"string",
+  "type":"string",
+  "longitude":"string",
+  "latitude":"string",
+  "description":"string"
+}

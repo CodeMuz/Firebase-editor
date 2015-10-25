@@ -1,0 +1,28 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <div class="jumbotron">
+
+        <div class="container">
+            <form method="post" action="/add">
+                <div class="form-group panel panel-success">
+                    <div class="panel-heading">Add new Entry</div>
+                    <div class="panel-body">
+                        {% for key,field in fields %}
+                            {% if key !='id' %}
+                                <label for="{{key}}">{{key}}</label><input id="{{key}}" type="text" class="form-control" name="{{key}}" value="" />
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p><button class="btn btn-primary btn-lg" href="/" role="button">Submit</button></p>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

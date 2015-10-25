@@ -1,0 +1,44 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <div class="container all-fests">
+            <div class="form-group panel panel-success">
+                <div class="panel-body">
+                    <a class="btn btn-primary" href="/festadd">Add new Entry</a>
+                    <table data-toggle="table"
+                           data-sort-order="desc"
+                           data-search="true"
+                           data-pagination="true">
+                        <thead>
+
+                        <tr>
+                            {% for fkey,field in fields %}
+                                <th data-field="{{ fkey }}" data-sortable="true">{{ fkey }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for key,fest in entries %}
+                                <tr>
+                                    {% for fkey,field in fields %}
+
+                                        <td>
+                                        <a href="/fest/{{ fest.id }}">
+                                            {{ attribute(fest,fkey) }}
+                                        </a>
+                                        </td>
+
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
