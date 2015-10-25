@@ -6,8 +6,11 @@ include 'Firebase.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+if (file_exists('.env')) {
+    $dotenv = new Dotenv\Dotenv(__DIR__);
+    $dotenv->load();
+}
+
 
 $app = new Silex\Application();
 $app['debug'] = true;
