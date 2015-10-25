@@ -91,9 +91,10 @@ $app->post('/add', function (Request $request) use($app) {
         $data[$field] = $request->get($field);
     }
 
-    echo "<pre>";
-    var_dump($data);
-    return new Response('Thank you for your feedback!', 201);
+    $app['FireBase']->push('',$data);
+
+    return $app->redirect('/');
+
 });
 
 

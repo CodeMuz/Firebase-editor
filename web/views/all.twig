@@ -6,7 +6,7 @@
         <div class="container all-fests">
             <div class="form-group panel panel-success">
                 <div class="panel-body">
-                    <a class="btn btn-primary" href="/festadd">Add new Entry</a>
+                    <a class="btn btn-primary" href="/festadd">Add new Entry</a> Array size: {{ entries|length }}
                     <table data-toggle="table"
                            data-sort-order="desc"
                            data-search="true"
@@ -25,7 +25,7 @@
                                     {% for fkey,field in fields %}
 
                                         <td>
-                                        <a href="/fest/{{ fest.id }}">
+                                        <a href="/fest/{{ key }}">
                                             {{ attribute(fest,fkey) }}
                                         </a>
                                         </td>

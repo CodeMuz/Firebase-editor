@@ -15,7 +15,7 @@ class Firebase
     public function __construct()
     {
 
-        $this->loadJSONFile();
+
 
         $this->fields = json_decode(file_get_contents('data/fields.json'), TRUE);
         $this->editfields = json_decode(file_get_contents('data/editfields.json'), TRUE);
@@ -26,15 +26,20 @@ class Firebase
 
         $this->firebase = new \Firebase\FirebaseLib($this->DEFAULT_URL, $this->DEFAULT_TOKEN);
 
+        $this->loadJSONFile();
+
     }
 
     private function loadJSONFile(){
 
-        $this->data = json_decode(file_get_contents('data/fest.json'), TRUE);
+        $fireBaseData = $this->get();
+        //$this->data = json_decode(file_get_contents('data/fest.json'), TRUE);
 
-        foreach($this->data as $i => $data){
-            $this->data[$i]['id'] = $i;
-        }
+        $this->data = json_decode($fireBaseData, TRUE);
+
+//        foreach($this->data as $i => $data){
+//            $this->data[$i]['id'] = $i;
+//        }
 
     }
 
@@ -50,30 +55,16 @@ class Firebase
 
     public function set($path,$data){
 
-
-        // --- storing an array ---
-        $test = array(
-            "foo" => "bar",
-            "i_love" => "lamp",
-            "id" => 42
-        );
-        $dateTime = new DateTime();
-        //$firebase->set(self::DEFAULT_PATH . '/' . $dateTime->format('c'), $test);
-
-        // --- storing a string ---
-        //$firebase->set(self::DEFAULT_PATH . '/messages/contact001', "John Doe");
-
-        // --- reading the stored string ---
-        //$name = $firebase->get(self::DEFAULT_PATH . '/messages/contact001');
-
-        //var_dump($name);
-        //die("done");
-
         $this->firebase->set($this->DEFAULT_PATH . $path, $data);
 
     }
+    public function push($path,$data){
 
-    public function get($path){
+        $this->firebase->push($this->DEFAULT_PATH . $path, $data);
+
+    }
+
+    public function get($path = ''){
 
         return $this->firebase->get($this->DEFAULT_PATH . $path);
 
@@ -85,8 +76,8 @@ class Firebase
 
     public function getEntry($id){
 
-        foreach($this->data as $entry){
-            if($entry['id'] == $id){
+        foreach($this->data as $key => $entry){
+            if($key == $id){
                 return $entry;
             }
         }
