@@ -11,6 +11,9 @@ if (file_exists('.env')) {
     $dotenv->load();
 }
 
+header_remove('X-Frame-Options');
+header('X-Frame-Options: GOFORIT');
+
 
 $app = new Silex\Application();
 $app['debug'] = true;
