@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # php-getting-started
 
 A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
@@ -21,3 +22,7 @@ $ heroku open
 For more information about using PHP on Heroku, see these Dev Center articles:
 
 - [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+=======
+# Firebase-editor
+A FireBase JSON editor using Silex / Symfony and Twig
+>>>>>>> ddf6c75eeddcaa5be6c23cbb72af615b978d97f0
